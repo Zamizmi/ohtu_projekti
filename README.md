@@ -38,3 +38,4 @@ Ohjelman koodi on tyyliltään yhtenäistä ja selkeää.
 * [Sami Lindqvist](https://github.com/zamizmi)
 * [Topi Laanti](https://github.com/laatopi)
 * [Lotta Merisaari](https://github.com/lmeri)
+
