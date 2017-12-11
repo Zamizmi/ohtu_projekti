@@ -15,7 +15,7 @@ class WebTest extends PHPUnit_Framework_TestCase
     {
         $this->webDriver->quit();
     }
-    public function buttonIsPressed($button)
+    public function testButtonIsPressed($button)
     {
       $this->webDriver->get($this->url);
      sleep(5);
@@ -23,7 +23,7 @@ class WebTest extends PHPUnit_Framework_TestCase
       $search->click();
       sleep(5);
     }
-    public function usernameAndPasswordAreEntered($username,$password)
+    public function testUsernameAndPasswordAreEntered($username,$password)
     {
       $search = $this->webDriver->findElement(WebDriverBy::id('tunnus'));
       $search->click();
@@ -36,18 +36,18 @@ class WebTest extends PHPUnit_Framework_TestCase
       sleep(5);
       $this->webDriver->findElement(WebDriverBy::id('success'));
     }
-    public function registrationSuccessful()
+    public function testRegistrationSuccessful()
     {
       sleep(5);
       $this->webDriver->findElement(WebDriverBy::id('success'));
     }
-    public function kirjaIsSelected()
+    public function testKirjaIsSelected()
     {
       $search = $this->webDriver->findElement(WebDriverBy::id('kirja'));
       $search->click();
       sleep(5);
     }
-    public function correctParamsKirja()
+    public function testCorrectParamsKirja()
     {
       $search = $this->webDriver->findElement(WebDriverBy::name('otsikko'));
       $search->click();
