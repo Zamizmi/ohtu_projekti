@@ -2,22 +2,23 @@
 {% block content %}
 <h1>Käyttäjän {{kayttaja.tunnus}} lukuvinkit</h1>
 <div class="show">
+    {% for vinkki in vinkit %}
+    {% if vinkki.tyyppi == 'kirja' %}
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>Otsikko</th>
-                <th>Status</th>
-                <th>Poista</th>
+                <th width="70%">Kirja</th>
+                <th width="15%">Status</th>
+                <th width="15%">Poista</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for vinkki in vinkit %}
             <tr>
                 <td><a href="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}">{{vinkki.nimi}}</a>  <span class="badge badge-pill badge-info">{{vinkki.tyyppi}}</span></td>
 
-                {% if status %}
-                <td><span class="badge badge-success">luettu</span> 
+                {% if vinkki.status %}
+                <td><span class="badge badge-success">suoritettu</span> 
                 </td>
                 {% else %}
                 <td><span class="badge badge-warning">kesken</span> 
@@ -25,12 +26,107 @@
                 {% endif %}               
                 <td>
                     <form method="post" action="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}/delete" style="display: inline-block;">
-                        <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+
+                        <button type="submit" class="btn btn-danger btn-sm">Poista vinkeistä</button>
+
                     </form>
                 </td>
             </tr>
-            {% endfor %}
         </tbody>
     </table>
+    {% endif %}
+    {% if vinkki.tyyppi == 'podcast' %}
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th width="70%">Podcast</th>
+                <th width="15%">Status</th>
+                <th width="15%">Poista</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+            <tr>
+                <td><a href="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}">{{vinkki.nimi}}</a>  <span class="badge badge-pill badge-info">{{vinkki.tyyppi}}</span></td>
+
+                {% if vinkki.status %}
+                <td><span class="badge badge-success">suoritettu</span> 
+                </td>
+                {% else %}
+                <td><span class="badge badge-warning">kesken</span> 
+                </td>
+                {% endif %}               
+                <td>
+                    <form method="post" action="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}/delete" style="display: inline-block;">
+                        <button type="submit" class="btn btn-danger btn-sm">Poista vinkeistä</button>
+                    </form>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    {% endif %}
+    {% if vinkki.tyyppi == 'blogpost' %}
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th width="70%">Blogpost</th>
+                <th width="15%">Status</th>
+                <th width="15%">Poista</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><a href="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}">{{vinkki.nimi}}</a>  <span class="badge badge-pill badge-info">{{vinkki.tyyppi}}</span></td>
+
+                {% if vinkki.status %}
+                <td><span class="badge badge-success">suoritettu</span> 
+                </td>
+                {% else %}
+                <td><span class="badge badge-warning">kesken</span> 
+                </td>
+                {% endif %}               
+                <td>
+                    <form method="post" action="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}/delete" style="display: inline-block;">
+                        <button type="submit" class="btn btn-danger btn-sm">Poista vinkeistä</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+    {% if vinkki.tyyppi == 'video' %}
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th width="70%">Video</th>
+                <th width="15%">Status</th>
+                <th width="15%">Poista</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td><a href="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}">{{vinkki.nimi}}</a>  <span class="badge badge-pill badge-info">{{vinkki.tyyppi}}</span></td>
+
+                {% if vinkki.status %}
+                <td><span class="badge badge-success">suoritettu</span> 
+                </td>
+                {% else %}
+                <td><span class="badge badge-warning">kesken</span> 
+                </td>
+                {% endif %}               
+                <td>
+                    <form method="post" action="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}/delete" style="display: inline-block;">
+                        <button type="submit" class="btn btn-danger btn-sm">Poista vinkeistä</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+    {% endfor %}
 </div>
 {% endblock %}
