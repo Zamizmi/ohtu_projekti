@@ -47,7 +47,7 @@ script:
   - ls -al vendor/behat
   - ls -al vendor/phpunit
   - ls -al vendor/bin
-  - php ./vendor/phpunit/phpunit --coverage-clover=coverage.xml
+  - php ./vendor/bin/phpunit --coverage-clover=coverage.xml
 # configure notifications (email, IRC, campfire etc)
 after_success:
     - bash <(curl -s https://codecov.io/bash)
