@@ -43,12 +43,12 @@ before_install:
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
 script:
-  #- vendor/behat/behat/bin/behat
+  - vendor/behat/behat/bin/behat
   - php ./vendor/phpunit/phpunit --coverage-clover=coverage.xml
   - ls -al
   - ls -al vendor/behat
-  - ls -al vendor/phpunit
-  - ls -al vendor/bin
+  - ls -al vendor/phpunit/php-code-coverage
+  - ls -al vendor/bin/phpunit
 # configure notifications (email, IRC, campfire etc)
 after_success:
     - bash <(curl -s https://codecov.io/bash)
