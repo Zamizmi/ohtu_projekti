@@ -1,5 +1,5 @@
 <?php
-class CodeCoverageTest extends PHPUnit_Extensions_Selenium2TestCase
+class CodeCoverageTest extends PHPUnit_Framework_TestCase
 {
     protected $coverageScriptUrl = 'http://localhost/phpunit_coverage.php';
 

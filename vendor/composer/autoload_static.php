@@ -766,7 +766,6 @@ class ComposerStaticInit957609a8983caeebe47801941b0b46ff
         'SessionNotCreatedException' => __DIR__ . '/..' . '/facebook/webdriver/lib/WebDriverExceptions.php',
         'StaleElementReferenceException' => __DIR__ . '/..' . '/facebook/webdriver/lib/WebDriverExceptions.php',
         'Status' => __DIR__ . '/../..' . '/app/models/status.php',
-        'StatusController' => __DIR__ . '/../..' . '/app/controllers/status_controller.php',
         'TableLister' => __DIR__ . '/../..' . '/lib/ConnectionTest/connection_test.php',
         'Tag' => __DIR__ . '/../..' . '/app/models/tag.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',

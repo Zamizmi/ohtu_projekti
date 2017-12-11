@@ -733,6 +733,7 @@ class ContainerBuilderTest extends TestCase
             PsrContainerInterface::class => true,
             ContainerInterface::class => true,
             'baz_%env(BAR)%' => true,
+            'bar_%env(BAR)%' => true,
         );
         $this->assertSame($expected, $container->getRemovedIds());
 
@@ -1237,6 +1238,9 @@ class ContainerBuilderTest extends TestCase
         $this->assertSame($foo2, $foo2->bar->foobar->foo);
 
         $this->assertSame(array(), (array) $container->get('foobar4'));
+
+        $foo5 = $container->get('foo5');
+        $this->assertSame($foo5, $foo5->bar->foo);
     }
 
     public function provideAlmostCircular()
@@ -1305,6 +1309,24 @@ class ContainerBuilderTest extends TestCase
 
         $this->assertSame('via-argument', $container->get('foo')->class1->identifier);
         $this->assertSame('via-bindings', $container->get('foo')->class2->identifier);
+    }
+
+    public function testIdCanBeAnObjectAsLongAsItCanBeCastToString()
+    {
+        $id = new Reference('another_service');
+        $aliasId = new Reference('alias_id');
+
+        $container = new ContainerBuilder();
+        $container->set($id, new \stdClass());
+        $container->setAlias($aliasId, 'another_service');
+
+        $this->assertTrue($container->has('another_service'));
+        $this->assertTrue($container->has($id));
+        $this->assertTrue($container->hasAlias('alias_id'));
+        $this->assertTrue($container->hasAlias($aliasId));
+
+        $container->removeAlias($aliasId);
+        $container->removeDefinition($id);
     }
 }
 
