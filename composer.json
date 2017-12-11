@@ -17,8 +17,7 @@
   "require-dev": {
   "phpunit/phpunit-selenium": "1.4.*",
   "phpunit/phpunit": "5.7.*",
-  "behat/behat": "^3.4",
-  "leanphp/behat-code-coverage"
+  "behat/behat": "^3.4"
   },
   "scripts": {
     "test": "./vendor/bin/phpunit"
