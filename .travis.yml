@@ -45,10 +45,11 @@ before_install:
 script:
   - vendor/behat/behat/bin/behat
   - php ./vendor/phpunit/phpunit --coverage-clover=coverage.xml
-  - ls -al vendor/phpunit/phpunit
-  - ls -al vendor/behat
-  - ls -al vendor/phpunit/php-code-coverage
-  - ls -al vendor/bin/phpunit
+  - phpunit --configuration phpunit_$DB.xml --coverage-text
+#  - ls -al vendor/phpunit/phpunit
+#  - ls -al vendor/behat
+#  - ls -al vendor/phpunit/php-code-coverage
+#  - ls -al vendor/bin/phpunit
 # configure notifications (email, IRC, campfire etc)
 after_success:
     - bash <(curl -s https://codecov.io/bash)

@@ -4,7 +4,7 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 require_once 'vendor/autoload.php';
-require_once 'tests/SelTest.php';
+require_once 'Tests/SelTest.php';
 /**
  * Defines application features from the specific context.
  */
