@@ -46,8 +46,8 @@
         </ul>
         {% else %}
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{base_path}}/login">Kirjaudu sisään</a></li>
-          <li><a href="{{base_path}}/signup">Rekisteröidy</a></li>
+          <li><a href="{{base_path}}/login" id="login">Kirjaudu sisään</a></li>
+          <li><a href="{{base_path}}/signup" id="signup">Rekisteröidy</a></li>
         </ul>
         {% endif %}
       </ul>
@@ -64,7 +64,7 @@
   <div id="main-container">
     <!-- Dynaaminen sisältö tulee tähän -->
     {% if message %}
-    <div class="alert alert-success">
+    <div id="success" class="alert alert-success">
       {{message}}
     </div>
     {% endif %}
@@ -78,7 +78,7 @@
       </ul>
     </div>
     {% endif %}
-    
+
     {% if error %}
     <div class="alert alert-danger">
       {{error}}

@@ -3,18 +3,12 @@
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
-
 require_once 'vendor/autoload.php';
 require_once 'Tests/SelTest.php';
-
 /**
  * Defines application features from the specific context.
  */
-
-class FeatureContext implements Context
-
-class FeatureContext extends PHPUnit_Extensions_Selenium2TestCase implements Context
-
+class FeatureContext extends PHPUnit_Framework_TestCase implements Context
 {
     /**
      * Initializes context.
@@ -25,31 +19,72 @@ class FeatureContext extends PHPUnit_Extensions_Selenium2TestCase implements Con
      */
     public function __construct()
     {
-
+      global $myTest;
+      $myTest = new WebTest();
+      $myTest->setUp();
     }
 
     /**
-         * @When username :arg1 and password :arg2 are entered
-         */
-        public function usernameAndPasswordAreEntered2($arg1, $arg2)
-        {
-            print("Jees");
-                }
-
-
-}
-
-    
-
-    /**
-     * @Given kirjaudu sisaan is pressed
-     */
-    public function kirjauduSisaanIsPressed()
-
+      * @Given /signup is pressed/
+      */
+    public function signUpIsPressed()
     {
-        $myTest = new WebTest();
-        $myTest->setUp();           // Your setup will always be called prior the test.
-        $myTest->prepareSession();  // Specific to Selenium test case, called from `runTest` method.
-        $myTest->testTitle();
-       
+      global $myTest;
+      $myTest->buttonIsPressed('signup');
     }
+
+    /**
+      * @Given /kirjaudu sisaan is pressed/
+      */
+      public function kirjauduSisaanIsPressed()
+      {
+        global $myTest;
+        $myTest->buttonIsPressed('login');
+      }
+
+    /**
+      * @When /username "([^"]+)" and password "([^"]+)" are entered/
+      */
+      public function usernameAndPassword($username, $password)
+      {
+        global $myTest;
+        $myTest->usernameAndPasswordAreEntered($username,$password);
+      }
+
+      /**
+        * @Then /system will respond with success/
+        */
+      public function systemWillRespond()
+      {
+        global $myTest;
+        $myTest->registrationSuccessful();
+        $myTest->tearDown();
+      }
+
+      /**
+        * @Given /lisaa lukuvinkki is pressed/
+        */
+      public function lisaaLukuvinkkiIsPressed()
+      {
+        global $myTest;
+        $myTest->buttonIsPressed('lisaa');
+      }
+
+      /**
+        * @When /kirja is selected/
+        */
+        public function kirjaIsSelected()
+        {
+          global $myTest;
+          $myTest->kirjaIsSelected();
+        }
+
+        /**
+          * @When /correct params submitted/
+          */
+          public function correctParamsSubmitted()
+          {
+            global $myTest;
+            $myTest->correctParamsKirja();
+          }
+}
