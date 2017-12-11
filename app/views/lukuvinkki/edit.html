@@ -48,11 +48,12 @@
             <label>Tags</label>
             {% for tag in tags %}
                 {% for valittuTag in joValitutTagit %}
-                {% if tag.nimi == valittuTag.tag_nimi %}
+                {% if array_key_exists( tag, joValitutTagit) %}
                     <input type="checkbox" name="tags[]" value="{{tag.id}}" checked>{{valittuTag.tag_nimi}}
+                    {% else %}
+                    <input type="checkbox" name="tags[]" value="{{tag.id}}">{{tag.nimi}}
                 {% endif %}
                 {% endfor %}
-                <input type="checkbox" name="tags[]" value="{{tag.id}}">{{tag.nimi}}
             {% endfor %}
 
         </div>

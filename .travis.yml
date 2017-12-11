@@ -45,6 +45,7 @@ before_install:
 script:
   #- vendor/behat/behat/bin/behat
   - php ./vendor/phpunit/phpunit --coverage-clover=coverage.xml
+  - ls -al
   - ls -al vendor/behat
   - ls -al vendor/phpunit
   - ls -al vendor/bin
