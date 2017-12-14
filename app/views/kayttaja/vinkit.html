@@ -2,8 +2,7 @@
 {% block content %}
 <h1>Käyttäjän {{kayttaja.tunnus}} lukuvinkit</h1>
 <div class="show">
-    {% for vinkki in vinkit %}
-    {% if vinkki.tyyppi == 'kirja' %}
+    {% if books %}
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -14,6 +13,7 @@
         </thead>
 
         <tbody>
+            {% for vinkki in books %}
             <tr>
                 <td><a href="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}">{{vinkki.nimi}}</a>  <span class="badge badge-pill badge-info">{{vinkki.tyyppi}}</span></td>
 
@@ -32,10 +32,11 @@
                     </form>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     {% endif %}
-    {% if vinkki.tyyppi == 'podcast' %}
+    {% if podcasts %}
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -46,7 +47,7 @@
         </thead>
 
         <tbody>
-            
+            {% for vinkki in podcasts %}
             <tr>
                 <td><a href="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}">{{vinkki.nimi}}</a>  <span class="badge badge-pill badge-info">{{vinkki.tyyppi}}</span></td>
 
@@ -63,11 +64,11 @@
                     </form>
                 </td>
             </tr>
-            
+            {% endfor %}
         </tbody>
     </table>
     {% endif %}
-    {% if vinkki.tyyppi == 'blogpost' %}
+    {% if blogposts %}
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -78,6 +79,7 @@
         </thead>
 
         <tbody>
+            {% for vinkki in blogposts %}
             <tr>
                 <td><a href="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}">{{vinkki.nimi}}</a>  <span class="badge badge-pill badge-info">{{vinkki.tyyppi}}</span></td>
 
@@ -94,10 +96,11 @@
                     </form>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     {% endif %}
-    {% if vinkki.tyyppi == 'video' %}
+    {% if videos %}
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -106,8 +109,8 @@
                 <th width="15%">Poista</th>
             </tr>
         </thead>
-
         <tbody>
+            {% for vinkki in videos %}
             <tr>
                 <td><a href="{{base_path}}/lukuvinkki/{{vinkki.lukuvinkki_id}}">{{vinkki.nimi}}</a>  <span class="badge badge-pill badge-info">{{vinkki.tyyppi}}</span></td>
 
@@ -124,9 +127,9 @@
                     </form>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     {% endif %}
-    {% endfor %}
 </div>
 {% endblock %}

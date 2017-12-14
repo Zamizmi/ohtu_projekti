@@ -4,11 +4,6 @@ $routes->get('/', function() {
     LukuvinkkiController::index();
 });
 
-$routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-});
-
-
 //Lukuvinkit
 
 $routes->get('/lukuvinkki', function() {

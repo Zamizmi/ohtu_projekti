@@ -53,6 +53,19 @@ class KayttajaController extends BaseController {
         $kayttaja = parent::get_user_logged_in();
 
         $vinkit = KayttajaLukuvinkki::findTips($kayttaja->id);
+        $books = $blogposts = $podcasts = $videos = array();
+        
+        foreach($vinkit as $v) {
+            if ($v->tyyppi == 'kirja') {
+                array_push($books, $v);
+            } elseif ($v->tyyppi == 'podcast') {
+                array_push($podcasts, $v);
+            } elseif ($v->tyyppi == 'blogpost') {
+                array_push($blogposts, $v);
+            } else {
+                array_push($videos, $v);
+            }
+        }
         
         foreach ($vinkit as $vinkki) {
             $kayttajaid = $kayttaja->id;
@@ -61,7 +74,7 @@ class KayttajaController extends BaseController {
             $vinkki->status = $staattus;
         }
         
-        View::make('kayttaja/vinkit.html', array('vinkit' => $vinkit, 'kayttaja' => $kayttaja));
+        View::make('kayttaja/vinkit.html', array('vinkit' => $vinkit, 'kayttaja' => $kayttaja, 'books' => $books, 'blogposts' => $blogposts, 'podcasts' => $podcasts, 'videos' => $videos));
     }
     
     public static function addTip($id) {

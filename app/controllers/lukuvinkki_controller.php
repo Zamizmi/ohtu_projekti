@@ -65,7 +65,7 @@ class LukuvinkkiController extends BaseController {
             $lukuvinkki->save();
 
             $vinkki_controller = new LukuvinkkiController;
-            $vinkki_controller->handeTags($params, $lukuvinkki);
+            $vinkki_controller->handleTags($params, $lukuvinkki);
 
             Redirect::to('/lukuvinkki/' . $lukuvinkki->id, array('message' => 'Lukuvinkki on lisätty!'));
         } else {
@@ -96,7 +96,7 @@ class LukuvinkkiController extends BaseController {
             $lukuvinkki->save();
 
             $vinkki_controller = new LukuvinkkiController;
-            $vinkki_controller->handeTags($params, $lukuvinkki);
+            $vinkki_controller->handleTags($params, $lukuvinkki);
 
             Redirect::to('/lukuvinkki/' . $lukuvinkki->id, array('message' => 'Lukuvinkki on lisätty!'));
         } else {
@@ -127,7 +127,7 @@ class LukuvinkkiController extends BaseController {
             $lukuvinkki->save();
 
             $vinkki_controller = new LukuvinkkiController;
-            $vinkki_controller->handeTags($params, $lukuvinkki);
+            $vinkki_controller->handleTags($params, $lukuvinkki);
 
             Redirect::to('/lukuvinkki/' . $lukuvinkki->id, array('message' => 'Lukuvinkki on lisätty!'));
         } else {
@@ -158,7 +158,7 @@ class LukuvinkkiController extends BaseController {
             $lukuvinkki->save();
 
             $vinkki_controller = new LukuvinkkiController;
-            $vinkki_controller->handeTags($params, $lukuvinkki);
+            $vinkki_controller->handleTags($params, $lukuvinkki);
 
             Redirect::to('/lukuvinkki/' . $lukuvinkki->id, array('message' => 'Lukuvinkki on lisätty!'));
         } else {
@@ -166,7 +166,7 @@ class LukuvinkkiController extends BaseController {
         }
     }
 
-    public function handeTags($params, $lukuvinkki) {
+    public function handleTags($params, $lukuvinkki) {
         $tagit = $params['tagit'];
 
         try {
